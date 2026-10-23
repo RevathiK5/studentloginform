@@ -1,0 +1,45 @@
+﻿@model LOGINFORM.Models.Student
+
+
+@{
+    ViewBag.Title = "Delete Student";
+}
+
+<h2>Delete Student</h2>
+
+<h3>Are you sure you want to delete this student?</h3>
+
+<div>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+       
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Students1",
+                           new { id = Model.StudentId },
+                           FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("id", Model.StudentId)
+
+        <input type="submit" value="Delete"class="btn btn-danger" />
+
+        @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-default" })
+    }
+</div>
